@@ -1,9 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import Result from './Result';
+
 function App() {
   const [isMounted, setIsMounted] = useState(true);
   const [inputNumber, setInputNumber] = useState(null);
+  const [searchCharacter, setSearchCharacter] = useState(false);
+
   return (
     <div className='App'>
       {JSON.stringify(isMounted)}
@@ -14,13 +18,13 @@ function App() {
         checked={isMounted}
         onChange={() => {
           setIsMounted(!isMounted);
+          setSearchCharacter(false);
         }}
       />
       Mount the search bar Fetch
       {isMounted && (
         <div>
           <label>
-            {' '}
             <input
               name='numberOfGuests'
               type='number'
@@ -29,10 +33,16 @@ function App() {
               onChange={e => setInputNumber(e.target.value)}
             />
           </label>
-          <button disabled={inputNumber === null}>Fetch</button>
+          <button
+            disabled={inputNumber === null}
+            onClick={() => setSearchCharacter(true)}
+          >
+            Fetch
+          </button>
           <p>Which Rick and Morty Character?</p>
         </div>
       )}
+      {searchCharacter && <Result inputNumber={inputNumber} />}
     </div>
   );
 }
