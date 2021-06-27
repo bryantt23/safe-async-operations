@@ -7,6 +7,7 @@ function App() {
   const [isMounted, setIsMounted] = useState(true);
   const [inputNumber, setInputNumber] = useState(null);
   const [searchCharacter, setSearchCharacter] = useState(false);
+  const [propsInputNumber, setPropsInputNumber] = useState(null);
 
   return (
     <div className='App'>
@@ -39,6 +40,7 @@ function App() {
             onClick={() => {
               setSearchCharacter(false);
               setSearchCharacter(true);
+              setPropsInputNumber(inputNumber);
             }}
           >
             Fetch
@@ -46,7 +48,7 @@ function App() {
           <p>Which Rick and Morty Character?</p>
         </div>
       )}
-      {searchCharacter && <Result inputNumber={inputNumber} />}
+      {searchCharacter && <Result inputNumber={propsInputNumber} />}
     </div>
   );
 }
