@@ -35,7 +35,10 @@ function App() {
           </label>
           <button
             disabled={inputNumber === null}
-            onClick={() => setSearchCharacter(true)}
+            onClick={() => {
+              setSearchCharacter(false);
+              setSearchCharacter(true);
+            }}
           >
             Fetch
           </button>
