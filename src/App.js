@@ -19,6 +19,7 @@ function App() {
         onChange={() => {
           setIsMounted(!isMounted);
           setSearchCharacter(false);
+          setInputNumber(null);
         }}
       />
       Mount the search bar Fetch
